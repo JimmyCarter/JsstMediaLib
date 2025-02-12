@@ -1,6 +1,10 @@
-dependencyResolutionManagement {
+
+pluginManagement {
     repositories {
-        // ... existing repositories ...
-        maven { url 'https://jitpack.io' }
+        google()
+        mavenCentral()
+        gradlePluginPortal()
     }
 }
+
+rootProject.name = 'JsstMediaLib'
