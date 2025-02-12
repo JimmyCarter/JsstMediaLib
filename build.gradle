@@ -1,0 +1,16 @@
+plugins {
+    id 'maven-publish'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.JimmyCarter'
+                artifactId = 'JsstMediaLib'
+                version = '1.0.0'
+            }
+        }
+    }
+}
