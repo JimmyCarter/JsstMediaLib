@@ -1,10 +1,20 @@
-// ... existing code ...
+dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
+    	dependencies {
+	        implementation 'com.github.JimmyCarter:JsstMediaLib:Tag'
+	}
+
 publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'com.github.JimmyCarter'
             artifactId = 'JsstMediaLib'
-            version = '1.0.6'    // 更新版本号
+            version = '1.0.7'    // 更新版本号
             
             from components.release
             artifact androidSourcesJar
