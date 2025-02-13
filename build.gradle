@@ -1,0 +1,13 @@
+// ... existing code ...
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.JimmyCarter'
+            artifactId = 'JsstMediaLib'
+            version = '1.0.4'    // 更新版本号
+            
+            from components.release
+            artifact androidSourcesJar
+        }
+    }
+}
