@@ -1,23 +1,28 @@
-dependencyResolutionManagement {
-		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-		repositories {
-			mavenCentral()
-			maven { url 'https://jitpack.io' }
-		}
-	}
-    	dependencies {
-	        implementation 'com.github.JimmyCarter:JsstMediaLib:Tag'
-	}
+plugins {
+    id("com.android.library")
+}
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'com.github.JimmyCarter'
-            artifactId = 'JsstMediaLib'
-            version = '1.0.7'    // 更新版本号
-            
-            from components.release
-            artifact androidSourcesJar
-        }
+        compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    }
+    
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
+
+// 告诉 JitPack 使用已编译的 AAR 文件
+task copyAar(type: Copy) {
+    from 'JsstMediaLib.aar'
+    into "$buildDir/outputs/aar"
+}
+build.dependsOn copyAar
