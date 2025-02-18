@@ -22,9 +22,14 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+    }
 }
 
-// 告诉 JitPack 使用已编译的 AAR 文件
 task copyAar(type: Copy) {
     from 'JsstMediaLib.aar'
     into "$buildDir/outputs/aar"
