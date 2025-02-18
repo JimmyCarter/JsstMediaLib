@@ -8,6 +8,13 @@ buildscript {
     }
 }
 
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
 plugins {
     id 'maven-publish'
 }
@@ -40,8 +47,15 @@ publishing {
         aar(MavenPublication) {
             groupId = 'com.github.JimmyCarter'
             artifactId = 'JsstMediaLib'
-            version = '1.1.0'
+            version = '1.1.2'
             artifact("$buildDir/outputs/aar/JsstMediaLib.aar")
+        }
+    }
+    
+    repositories {
+        maven {
+            name = "local"
+            url = "${buildDir}/repo"
         }
     }
 }
