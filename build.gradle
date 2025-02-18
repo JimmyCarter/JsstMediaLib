@@ -8,18 +8,15 @@ buildscript {
     }
 }
 
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
 allprojects {
     repositories {
         google()
         mavenCentral()
     }
 }
-
-plugins {
-    id 'maven-publish'
-}
-
-apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 30
@@ -60,4 +57,7 @@ publishing {
     }
 }
 
-build.dependsOn copyAar
+// Add this line to ensure copyAar runs before publishing
+tasks.withType(PublishToMavenLocal) {
+    dependsOn copyAar
+}
